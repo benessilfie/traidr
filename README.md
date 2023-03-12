@@ -1,10 +1,11 @@
-# Marketplace API - Traidr
+# Marketplace API Project - Traidr
 
 ## Table of Contents
 + [About](#about)
 + [Getting Started](#getting_started)
-+ [Usage](#usage)
-+ [Contributing](../CONTRIBUTING.md)
++ [Prerequisites](#prerequisites)
+<!-- + [Usage](#usage) -->
+<!-- + [Contributing](../CONTRIBUTING.md) -->
 
 ## About <a name = "about"></a>
 Traidr is a marketplace API that allows users to seamlessly buy and sell products. Users can place orders, upload products, and interact with each other through comments and images
