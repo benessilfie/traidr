@@ -1,4 +1,4 @@
-# Wallet API Project - Pennywise
+# Marketplace API - Traidr
 
 ## Table of Contents
 + [About](#about)
