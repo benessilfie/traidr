@@ -1,24 +1,45 @@
-# README
+# Wallet API Project - Pennywise
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Table of Contents
++ [About](#about)
++ [Getting Started](#getting_started)
++ [Usage](#usage)
++ [Contributing](../CONTRIBUTING.md)
 
-Things you may want to cover:
+## About <a name = "about"></a>
+Traidr is a marketplace API that allows users to seamlessly buy and sell products. Users can place orders, upload products, and interact with each other through comments and images
 
-* Ruby version
+## Getting Started <a name = "getting_started"></a>
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+What things you need to install the software and how to install them.
 
-* Database creation
+```
+ruby 
+rails
+postgres
+```
 
-* Database initialization
+<!-- ### Installing -->
 
-* How to run the test suite
+<!-- A step by step series of examples that tell you how to get a development env running. -->
 
-* Services (job queues, cache servers, search engines, etc.)
+<!-- Say what the step will be -->
 
-* Deployment instructions
+<!-- ``` -->
+<!-- Give the example -->
+<!-- ``` -->
 
-* ...
+<!-- And repeat -->
+
+<!-- ``` -->
+<!-- until finished -->
+<!-- ``` -->
+
+<!-- End with an example of getting some data out of the system or using it for a little demo. -->
+
+<!-- ## Usage <a name = "usage"></a> -->
+
+<!-- Add notes about how to use the system. -->
