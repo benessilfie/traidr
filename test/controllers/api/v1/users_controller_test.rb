@@ -1,0 +1,63 @@
+require 'test_helper'
+
+class API::V1::UsersControllerTest < ActionDispatch::IntegrationTest
+  setup { @user = users.first }
+  setup { host! 'api.lvh.me' }
+
+  test 'should show users' do
+    get api_v1_users_url, as: :json
+    assert_response :success
+
+    json_response = JSON.parse(response.body)
+    assert_equal User.count, json_response['data'].size
+  end
+
+  test 'should show user' do
+    get api_v1_user_url(@user), as: :json
+    assert_response :success
+
+    json_response = JSON.parse(response.body)
+    assert_equal @user.email, json_response['data']['email']
+  end
+
+  test 'should create user' do
+    assert_difference('User.count') do
+      post api_v1_users_url, params: { user: { email: 'test@test.com', password: '12345678' } }, as: :json
+    end
+    assert_response :created
+  end
+
+  test 'should not create user with taken email' do
+    assert_no_difference('User.count') do
+      post api_v1_users_url, params: { user: { email: @user.email, password: '12345678' } }, as: :json
+    end
+    assert_response :unprocessable_entity
+  end
+
+  test 'should update user' do
+    patch api_v1_user_url(@user),
+          params: { user: { email: @user.email, password: '87654321' } },
+          headers: { Authorization: JsonWebToken.encode(user_id: @user.id) }, as: :json
+    assert_response :success
+  end
+
+  test 'should forbid update user' do
+    patch api_v1_user_url(@user), params: { user: { email: @user.email, password: '87654321' } }, as: :json
+    assert_response :forbidden
+  end
+
+  test 'should destroy user' do
+    assert_difference('User.count', -1) do
+      delete api_v1_user_url(@user),
+             headers: { Authorization: JsonWebToken.encode(user_id: @user.id) }, as: :json
+    end
+    assert_response :no_content
+  end
+
+  test 'should forbid destroy user' do
+    assert_no_difference('User.count') do
+      delete api_v1_user_url(@user), as: :json
+    end
+    assert_response :forbidden
+  end
+end
