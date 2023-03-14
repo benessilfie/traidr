@@ -3,7 +3,8 @@ class API::V1::UsersController < ApplicationController
   before_action :authorize, only: %i[update destroy]
 
   def show
-    render json: UserSerializer.new(@user).serialized_json, status: :ok
+    options = { include: %i[products] }
+    render json: UserSerializer.new(@user, options).serialized_json, status: :ok
   end
 
   def create
