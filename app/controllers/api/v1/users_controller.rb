@@ -2,20 +2,15 @@ class API::V1::UsersController < ApplicationController
   before_action :set_user, only: %i[show update destroy]
   before_action :authorize, only: %i[update destroy]
 
-  def index
-    @users = User.all
-    render json: { message: 'Users retrieved successfully', data: @users }, status: :ok
-  end
-
   def show
-    render json: { message: 'User retrieved successfully', data: @user }, status: :ok
+    render json: @user, status: :ok
   end
 
   def create
     @user = User.new(user_params)
 
     if @user.save
-      render json: { message: 'User created successfully', data: @user }, status: :created
+      render json: @user, status: :created
     else
       render json: { errors: @user.errors }, status: :unprocessable_entity
     end
@@ -23,7 +18,7 @@ class API::V1::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render json: { message: 'User updated successfully', data: @user }, status: :ok
+      render json: @user, status: :ok
     else
       render json: { errors: @user.errors }, status: :unprocessable_entity
     end
