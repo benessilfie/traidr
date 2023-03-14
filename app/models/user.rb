@@ -4,4 +4,5 @@ class User < ApplicationRecord
   validates :password_digest, presence: true, length: { minimum: 8, message: 'must be at least 8 characters' }
 
   has_secure_password
+  has_many :products, dependent: :destroy
 end
