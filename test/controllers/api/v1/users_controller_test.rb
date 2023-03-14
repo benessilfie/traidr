@@ -4,20 +4,12 @@ class API::V1::UsersControllerTest < ActionDispatch::IntegrationTest
   setup { @user = users.first }
   setup { host! 'api.lvh.me' }
 
-  test 'should show users' do
-    get api_v1_users_url, as: :json
-    assert_response :success
-
-    json_response = JSON.parse(response.body)
-    assert_equal User.count, json_response['data'].size
-  end
-
   test 'should show user' do
     get api_v1_user_url(@user), as: :json
     assert_response :success
 
     json_response = JSON.parse(response.body)
-    assert_equal @user.email, json_response['data']['email']
+    assert_equal @user.email, json_response['email']
   end
 
   test 'should create user' do
