@@ -9,7 +9,8 @@ class API::V1::ProductsController < ApplicationController
   end
 
   def show
-    render json: ProductSerializer.new(@product).serialized_json, status: :ok
+    options = { include: %i[user] }
+    render json: ProductSerializer.new(@product, options).serialized_json, status: :ok
   end
 
   def create
