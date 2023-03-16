@@ -3,17 +3,20 @@
 one:
   title: Harry Potter and The Philosopher's Stone
   price: 29.99
+  quantity: 50
   published: false
   user: one
 
 two:
   title: Americanah
   price: 19.99
+  quantity: 50
   published: false
   user: two
 
 three:
   title: Harry Potter and The Prisoner of Azkaban
   price: 29.99
+  quantity: 50
   published: false
   user: two

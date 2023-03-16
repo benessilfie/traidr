@@ -3,7 +3,14 @@ require 'test_helper'
 class API::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
   setup { host! 'api.lvh.me' }
   setup { @order = orders.first }
-  setup { @order_params = { order: { product_ids: [products(:one).id, products(:two).id], total: 50 } } }
+  setup do
+    @order_params = { order: {
+      product_ids_and_quantities: [
+        { product_id: products(:one).id, quantity: 3 },
+        { product_id: products(:two).id, quantity: 2 }
+      ]
+    } }
+  end
 
   test 'should forbid access to orders without token' do
     get api_v1_orders_url, as: :json
@@ -38,12 +45,14 @@ class API::V1::OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_response :forbidden
   end
 
-  test 'should create order with two products' do
+  test 'should create order with two products and two placements' do
     assert_difference('Order.count', 1) do
-      post api_v1_orders_url,
-           params: @order_params,
-           headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) },
-           as: :json
+      assert_difference('Placement.count', 2) do
+        post api_v1_orders_url,
+             headers: { Authorization: JsonWebToken.encode(user_id: @order.user_id) },
+             params: @order_params,
+             as: :json
+      end
     end
     assert_response :created
   end
