@@ -1,11 +1,11 @@
 #### Traidr API Documentation
 
-[ Base URL: api.lvh.me:3000/v1 ]
-[ Author: Ben Essilfie ]
+- Base URL: api.lvh.me:3000/v1
+- Author: [Ben Essilfie](https://www.linkedin.com/in/benessilfie/)
 
 ## Users
 
-### Create User
+### 1. Create User
 
 **Request**
 URL - `/users`
@@ -44,7 +44,7 @@ Status: `201 - Created`
 }
 ```
 
-### Get User
+### 2. Get User
 
 **Request**
 URL - `/users/:id`
@@ -73,7 +73,7 @@ Status: `200 - OK`
 }
 ```
 
-### Update user
+### 3. Update user
 
 **Request**
 Url - `/users/:id`
@@ -113,7 +113,7 @@ Status: `200 - OK`
 }
 ```
 
-### Delete User
+### 4. Delete User
 
 **Request**
 Url - `/users/:id`
@@ -123,7 +123,7 @@ Headers - `{Authorization: 'Bearer <token>'}`
 **Response**
 Status: `204 - No Content`
 
-### Login
+### 5. Login
 
 **Request**
 Url - `/auth/sessions`
@@ -152,7 +152,7 @@ Status: `201 - Created`
 }
 ```
 
-### Logout
+### 7. Logout
 
 **Request**
 Url - `/auth/sessions/:id`
@@ -172,7 +172,7 @@ body
 
 ## Products
 
-### Get All Products
+### 1. Get All Products
 
 **Request**
 URL - `/products`
@@ -232,7 +232,7 @@ Status: `200 - OK`
 }
 ```
 
-### Get One Product
+### 2. Get One Product
 
 **Request**
 URL - `/products/:id`
@@ -293,7 +293,7 @@ Status: `200 - OK`
 }
 ```
 
-### Create Product
+### 3. Create Product
 
 **Request**
 Url - `/products`
@@ -341,7 +341,7 @@ Status: `201 - Created`
 }
 ```
 
-### Update Product
+### 4. Update Product
 
 **Request**
 Url - `/products/:id`
@@ -389,7 +389,7 @@ Status: `200 - OK`
 }
 ```
 
-### Delete Product
+### 5. Delete Product
 
 **Request**
 Url - `/products/:id`
@@ -401,11 +401,12 @@ Status: `204 - No Content`
 
 ## Orders
 
-### Get All Orders
+### 1. Get All Orders
 
 **Request**
 URL - `/orders`
 Method - `GET`
+Headers - `{Authorization: 'Bearer <token>'}`
 
 **Response**
 Status: `200 - OK`
@@ -414,21 +415,62 @@ Status: `200 - OK`
 
 ```json
 {
-  "data": [],
+  "data": [
+    {
+      "id": "integer",
+      "type": "string",
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "integer",
+            "type": "string"
+          }
+        },
+        "products": {
+          "data": []
+        }
+      }
+    },
+    {
+      "id": "integer",
+      "type": "string",
+      "relationships": {
+        "user": {
+          "data": {
+            "id": "integer",
+            "type": "string"
+          }
+        },
+        "products": {
+          "data": [
+            {
+              "id": "integer",
+              "type": "string"
+            },
+            {
+              "id": "integer",
+              "type": "string"
+            }
+          ]
+        }
+      }
+    }
+  ],
   "links": {
     "first": "/v1/orders?page=1",
-    "last": "/v1/orders?page=0",
+    "last": "/v1/orders?page=1",
     "prev": "/v1/orders",
     "next": "/v1/orders"
   }
 }
 ```
 
-### Get Order
+### 2. Get Order
 
 **Request**
 URL - `/orders/:id`
 Method - `GET`
+Headers - `{Authorization: 'Bearer <token>'}`
 
 **Response**
 Status: `200 - OK`
@@ -436,10 +478,27 @@ Status: `200 - OK`
 **Response Body**
 
 ```json
-
+{
+  "data": {
+    "id": "integer",
+    "type": "string",
+    "relationships": {
+      "user": {
+        "data": {
+          "id": "integer",
+          "type": "string"
+        }
+      },
+      "products": {
+        "data": []
+      }
+    }
+  },
+  "included": []
+}
 ```
 
-### Create Order
+### 3. Create Order
 
 **Request**
 Url - `/orders`
