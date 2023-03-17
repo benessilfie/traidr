@@ -1,46 +1,132 @@
 # Marketplace API Project - Traidr
 
 ## Table of Contents
-+ [About](#about)
-+ [Getting Started](#getting_started)
-+ [Prerequisites](#prerequisites)
-<!-- + [Usage](#usage) -->
-<!-- + [Contributing](../CONTRIBUTING.md) -->
+
+- [About](#about)
+- [Usage](#usage)
+- [Getting Started](#getting_started)
+- [Test the API (Locally)](#test_the_API)
+- [Run the Mini Tests](#run_the_mini_tests)
+- [API Specificiations Docs](./docs/api_specifications.md)
 
 ## About <a name = "about"></a>
-Traidr is a marketplace API that allows users to seamlessly buy and sell products. Users can place orders, upload products, and interact with each other through comments and images
+
+Traidr is a marketplace API that allows users to seamlessly buy and sell products. Users can basically create their own store upload products to sell or place orders on the platform.
+
+## Usage <a name = "usage"></a>
+
+- Test the API thorough this Swagger Interactive Docs - [here](#here)
+- You can also find the API Specifications Docs [here](./docs/api_specifications.md)
 
 ## Getting Started <a name = "getting_started"></a>
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them.
-
 ```
-ruby 
+ruby
 rails
 postgres
 ```
 
-<!-- ### Installing -->
+### Setting up a development environment
 
-<!-- A step by step series of examples that tell you how to get a development env running. -->
+#### Step 1: Clone the repository
 
-<!-- Say what the step will be -->
+```
+git clone https://github.com/benessilfie/traidr.git
+```
 
-<!-- ``` -->
-<!-- Give the example -->
-<!-- ``` -->
+or with Github CLI
 
-<!-- And repeat -->
+```
+gh repo clone benessilfie/traidr
+```
 
-<!-- ``` -->
-<!-- until finished -->
-<!-- ``` -->
+#### Step 2: Run Bundle install
 
-<!-- End with an example of getting some data out of the system or using it for a little demo. -->
+```
+bundle install
+```
 
-<!-- ## Usage <a name = "usage"></a> -->
+#### Step 3: start the server
 
-<!-- Add notes about how to use the system. -->
+```
+rails start
+```
+
+## Test the API (Locally) <a name = "test_the_API"></a>
+
+- You can either go to the interactive swagger documentation locally at `http://api.lvh.me:3000/v1/docs` or the deployed version at `insert deployed version here`
+
+- Alternatively you can also use the API testing tool of your choice. You'll find the API documentation with the base URL and various endpoints [here](./docs/api_specifications.md)
+
+### Example
+
+#### Creating a user account
+
+- curl
+
+```bash
+curl --request POST \
+  --url http://api.lvh.me:3000/v1/users \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "user": {
+      "email": "test@example.com",
+      "password": "password"
+    }
+  }'
+```
+
+- httpie
+
+```
+http api.lvh.me:3000/v1/users \
+user:='{"email":"test@example.com","password":"password"}'
+```
+
+- postman
+  - URL - http://api.lvh.me:3000/v1/api/users
+  - Method - POST
+
+```bash
+{
+    "user": {
+        "email": "test@example.com",
+        "password": "password"
+    }
+}
+```
+
+#### Response
+
+```bash
+{
+    "data": {
+        "id": "1",
+        "type": "user",
+        "attributes": {
+            "email": "test@example.com"
+        },
+        "relationships": {
+            "products": {
+                "data": []
+            }
+        }
+    }
+}
+```
+
+## Run the Mini Tests <a name = "run_the_mini_tests"></a>
+
+To run the tests, just run the `rails test` command
+
+```bash
+rails test
+```
+
+## Author
+
+[Benjamin Essilfie Quansah](https://www.linkedin.com/in/benessilfie/)
