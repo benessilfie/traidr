@@ -1,0 +1,20 @@
+databases:
+  - name: traidr
+    databaseName: traidr
+    user: traidr
+    plan: free
+
+services:
+  - type: web
+    plan: free
+    name: traidr
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails s"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: traidr
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
