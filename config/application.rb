@@ -14,6 +14,7 @@ module Traidr
     config.hosts << 'api.lvh.me'
 
     config.eager_load_paths << Rails.root.join('lib')
+    config.hosts.clear
 
     # Configuration for the application, engines, and railties goes here.
     #
