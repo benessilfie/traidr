@@ -1,6 +1,6 @@
 #### Traidr API Documentation
 
-- Base URL: api.lvh.me:3000/v1
+- Base URL: https://traidr.onrender.com/api/v1
 - Author: [Ben Essilfie](https://www.linkedin.com/in/benessilfie/)
 
 ## Users

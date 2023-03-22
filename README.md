@@ -15,7 +15,7 @@ Traidr is a marketplace API that allows users to seamlessly buy and sell product
 
 ## Usage <a name = "usage"></a>
 
-- Test the API thorough this Swagger Interactive Docs - [here](#here)
+- Test the API thorough this Swagger Interactive Docs - [here](https://traidr.onrender.com)
 - You can also find the API Specifications Docs [here](./docs/api_specifications.md)
 
 ## Getting Started <a name = "getting_started"></a>
@@ -70,7 +70,7 @@ rails start
 
 ```bash
 curl --request POST \
-  --url http://api.lvh.me:3000/v1/users \
+  --url https://traidr.onrender.com/api/v1/users \
   --header 'Content-Type: application/json' \
   --data '{
     "user": {
@@ -83,12 +83,12 @@ curl --request POST \
 - httpie
 
 ```
-http api.lvh.me:3000/v1/users \
+http https://traidr.onrender.com/api/v1/users \
 user:='{"email":"test@example.com","password":"password"}'
 ```
 
 - postman
-  - URL - http://api.lvh.me:3000/v1/api/users
+  - URL - https://traidr.onrender.com/api/v1/users
   - Method - POST
 
 ```bash
