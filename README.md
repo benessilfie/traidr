@@ -58,7 +58,7 @@ rails start
 
 ## Test the API (Locally) <a name = "test_the_API"></a>
 
-- You can either go to the interactive swagger documentation locally at `http://api.lvh.me:3000/v1/docs` or the deployed version at `insert deployed version here`
+- You can either go to the interactive swagger documentation locally at `http://api.lvh.me:3000/v1/docs` or the deployed version [here](https://traidr.onrender.com/)
 
 - Alternatively you can also use the API testing tool of your choice. You'll find the API documentation with the base URL and various endpoints [here](./docs/api_specifications.md)
 
