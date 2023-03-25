@@ -82,6 +82,3 @@ test:
 production:
   <<: *default
   url: <%= ENV["DATABASE_URL"] %>
-  database: traidr_production
-  username: traidr
-  password: <%= ENV["TRAIDR_DATABASE_PASSWORD"] %>
