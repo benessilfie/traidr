@@ -3,7 +3,7 @@ class API::V1::Auth::SessionsController < ApplicationController
     @user = User.find_by_email(user_params[:email])
 
     if @user&.authenticate(user_params[:password])
-      render json: { token: JsonWebToken.encode(user_id: @user.id), email: @user.email }, status: :created
+      render json: { id: @user.id, token: JsonWebToken.encode(user_id: @user.id), email: @user.email }, status: :created
     else
       head :unauthorized
     end
