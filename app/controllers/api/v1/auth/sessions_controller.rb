@@ -9,6 +9,12 @@ class API::V1::Auth::SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    destroy_user_session
+    request.headers['Authorization'] = nil
+    render json: { message: 'User succesfully Logged out' }, status: :ok
+  end
+
   private
 
   def user_params
