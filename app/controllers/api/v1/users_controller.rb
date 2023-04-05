@@ -18,6 +18,8 @@ class API::V1::UsersController < ApplicationController
   end
 
   def update
+    @user.update(user_params)
+
     if @user.update(user_params)
       render json: UserSerializer.new(@user).serialized_json, status: :ok
     else
