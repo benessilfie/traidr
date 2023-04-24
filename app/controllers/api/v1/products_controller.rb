@@ -5,7 +5,7 @@ class API::V1::ProductsController < ApplicationController
   before_action :check_owner, only: %i[update destroy]
 
   def index
-    @products = Product.page(current_page).per(per_page).search(params)
+    @products = Product.order(created_at: :desc).page(current_page).per(per_page).search(params)
     options = get_links_serializer_options('api_v1_products_path', @products)
     render json: ProductSerializer.new(@products, options).serialized_json, status: :ok
   end
